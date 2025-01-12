@@ -1,10 +1,8 @@
 package com.statement.services.kafkaconfig;
 
-
 import com.payments.application.dto.TopupRequest;
 import com.payments.application.dto.TransferRequest;
 import com.payments.application.dto.WithdrawRequest;
-
 import com.statement.services.entity.Transaction;
 import com.statement.services.service.StatementService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +10,6 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Service
 public class KafkaConsumerService {
@@ -26,6 +23,8 @@ public class KafkaConsumerService {
 
     @KafkaListener(topics = "Transfer", groupId = "group_id")
     public void consumeTransfer(TransferRequest request) {
+        /*ApiVersions a=new ApiVersions();
+        a.*/
         Transaction transaction = new Transaction(
                 request.getFromWalletId(),
                 request.getToWalletId(),

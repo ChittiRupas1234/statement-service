@@ -10,5 +10,4 @@ public class GenerateStatementRequest {
     private LocalDateTime fromDate;
     private LocalDateTime toDate;
 
-    // Getters and Setters
 }
