@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="payments-fixed">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/payments/payments/0.0.1/payments-fixed.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

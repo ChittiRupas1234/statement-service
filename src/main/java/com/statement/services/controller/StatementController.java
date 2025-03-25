@@ -1,6 +1,7 @@
 package com.statement.services.controller;
 
 import com.statement.services.service.StatementService;
+import com.statement.services.service.TransactionCleanupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,9 @@ public class StatementController {
         this.statementService = statementService;
     }*/
 
+    @Autowired
+    private TransactionCleanupService transactionCleanupService;
+
     @GetMapping("/generate")
     public ResponseEntity<?> generateStatement(@RequestHeader("Authorization") String token,
                                                @RequestParam UUID walletId,
@@ -26,10 +30,16 @@ public class StatementController {
                                                @RequestParam String toDate) {
         // Call the statement service to generate the statement.
         try {
-            String filePath = statementService.generateStatement(token, walletId, fromDate, LocalDateTime.parse(toDate));
+            String filePath = statementService.generateStatement(token, walletId, fromDate,LocalDateTime.parse(toDate));
             return ResponseEntity.ok().body("Statement generated successfully at: " + filePath);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error generating statement: " + e.getMessage());
         }
     }
+
+    /*@DeleteMapping("/cleanup-transactions")
+    public ResponseEntity<String> cleanupTransactions() {
+        transactionCleanupService.archiveAndDeleteOldTransactions();
+        return ResponseEntity.ok("Old transactions archived and deleted successfully.");
+    }*/
 }
