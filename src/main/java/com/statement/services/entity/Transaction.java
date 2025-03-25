@@ -32,6 +32,7 @@ public class Transaction {
     private boolean isCredit;
     private LocalDateTime transactionDate;
 
+
     public Transaction(UUID fromWalletId, UUID toWalletId, BigDecimal amount, String transfer, boolean isCredit, LocalDateTime now) {
         this.fromWalletId = fromWalletId;
         this.toWalletId = toWalletId;
@@ -40,5 +41,4 @@ public class Transaction {
         this.isCredit = isCredit;
         this.transactionDate = now;
     }
-
 }
